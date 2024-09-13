@@ -22,6 +22,8 @@ st.markdown(
     .main {
         background-color: #483D8B;
         color: white;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     .animated-button {
@@ -45,7 +47,7 @@ st.markdown(
         margin-left: auto;
         margin-right: auto;
         width: 50%; /* Adjust width to be responsive */
-        max-width: 200px; /* Limit the maximum width */
+        max-width: 150px; /* Limit the maximum width */
         height: auto; /* Maintain aspect ratio */
         border-radius: 50%;
         object-fit: cover;
@@ -81,12 +83,14 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+st.markdown('<div class="main">', unsafe_allow_html=True)
+
 col1, col2 = st.columns(2)
 
 with col2:
     st.markdown(
         """
-        <div style="text-align: center;margin-top: 65px;">
+        <div style="text-align: center; margin-top: 65px;">
             <h1 style="color: white;">Abhisek De</h1>
         </div>
         """,
@@ -155,3 +159,5 @@ with col1:
         """,
         unsafe_allow_html=True
     )
+
+st.markdown('</div>', unsafe_allow_html=True)
