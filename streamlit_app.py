@@ -4,7 +4,7 @@ import base64
 from io import BytesIO
 
 
-image = Image.open('https://github.com/abhisekde96/personal-landing-page/blob/main/WhatsApp%20Image%202024-09-13%20at%207.16.45%20PM.jpeg')
+image = Image.open('dp.jpeg')
 
 buffered = BytesIO()
 image.save(buffered, format="JPEG")
