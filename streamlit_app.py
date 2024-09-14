@@ -3,39 +3,24 @@ from PIL import Image
 import base64
 from io import BytesIO
 
-
 # Load and encode image
 image = Image.open('dp.jpeg')
 buffered = BytesIO()
 image.save(buffered, format="JPEG")
 img_str = base64.b64encode(buffered.getvalue()).decode()
 
-# Inject JavaScript to hide the header and footer
+# Hide Streamlit header and footer using only CSS
 hide_streamlit_style = """
     <style>
     /* Hide Streamlit header and footer */
-    footer {visibility: hidden;}
-    header {visibility: hidden;}
+    footer {visibility: hidden !important;}
+    header {visibility: hidden !important;}
     </style>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const streamlitHeader = document.querySelector("header");
-        const streamlitFooter = document.querySelector("footer");
-        
-        if (streamlitHeader) {
-            streamlitHeader.style.display = "none";
-        }
-        if (streamlitFooter) {
-            streamlitFooter.style.display = "none";
-        }
-    });
-    </script>
 """
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-# App styling and layout
+# App styling and layout with responsive design
 st.markdown(
     """
     <style>
@@ -83,13 +68,70 @@ st.markdown(
         padding-top: 60px;
         display: inline-block;
     }
+
+    /* Media queries for responsiveness on mobile devices */
+    @media only screen and (max-width: 600px) {
+        .circular-image {
+            width: 150px;
+            height: 150px;
+        }
+
+        .animated-button {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        h1 {
+            font-size: 22px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        /* Adjust layout for mobile devices */
+        .block-container {
+            display: block;
+            width: 100%;
+            padding: 0px;
+        }
+    }
     </style>
     """,
     unsafe_allow_html=True
 )
 
+# Streamlit layout with columns and responsive design
 col1, col2 = st.columns(2)
 
+# Left column - Image and bio
+with col1:
+    st.markdown(
+        f'<img src="data:image/jpeg;base64,{img_str}" class="circular-image">',
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        """
+        <p style="font-size: 14px; margin-top: 16px;">
+            Business analyst with a passion for data and a knack for building apps from scratch. 
+            Turning insights into action, one dataset at a time.<br> 
+            Looking forward to collaborate on exciting ideas, cheers!
+        </p>
+        """,
+        unsafe_allow_html=True
+    )
+
+    st.markdown(
+        """
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=abhisekde96@gmail.com" target="_blank" class="contact-link">
+            Reach me out @
+        </a>
+        """,
+        unsafe_allow_html=True
+    )
+
+# Right column - Name, buttons, and links
 with col2:
     st.markdown( 
         """
@@ -133,32 +175,6 @@ with col2:
                 </button>
             </a>
         </div>
-        """,
-        unsafe_allow_html=True
-    )
-
-with col1:
-    st.markdown(
-        f'<img src="data:image/jpeg;base64,{img_str}" class="circular-image">',
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        """
-        <p style="font-size: 14px; margin-top: 16px;">
-            Business analyst with a passion for data and a knack for building apps from scratch. 
-            Turning insights into action, one dataset at a time.<br> 
-            Looking forward to collaborate on exciting ideas, cheers!
-        </p>
-        """,
-        unsafe_allow_html=True
-    )
-
-    st.markdown(
-        """
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=abhisekde96@gmail.com" target="_blank" class="contact-link">
-            Reach me out @
-        </a>
         """,
         unsafe_allow_html=True
     )
