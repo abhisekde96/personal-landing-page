@@ -123,9 +123,11 @@ with col1:
 
     st.markdown(
         """
+        <p style="font-size: 14px; margin-top: 16px;">
         <a href="https://mail.google.com/mail/?view=cm&fs=1&to=abhisekde96@gmail.com" target="_blank" class="contact-link">
             Reach me out @
         </a>
+        </p>
         """,
         unsafe_allow_html=True
     )
