@@ -15,10 +15,10 @@ st.markdown(
     <style>
     /* Hide Streamlit header and footer */
     footer {
-        visibility: hidden;
+        display: none;
     }
     header {
-        visibility: hidden;
+        display: none;
     }
 
     /* Main background styling */
