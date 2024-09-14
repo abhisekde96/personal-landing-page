@@ -35,8 +35,9 @@ st.markdown(
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 200px;
-        height: 200px;
+        width: 100%;
+        max-width: 200px;
+        height: auto;
         border-radius: 50%;
         object-fit: cover;
         border: 3px solid #fff;
@@ -69,11 +70,10 @@ st.markdown(
         display: inline-block;
     }
 
-    /* Media queries for responsiveness on mobile devices */
+    /* Mobile responsiveness */
     @media only screen and (max-width: 600px) {
         .circular-image {
-            width: 150px;
-            height: 150px;
+            max-width: 150px;
         }
 
         .animated-button {
@@ -89,11 +89,10 @@ st.markdown(
             font-size: 12px;
         }
 
-        /* Adjust layout for mobile devices */
-        .block-container {
+        /* Make columns stack on mobile */
+        .stColumn {
             display: block;
-            width: 100%;
-            padding: 0px;
+            width: 100% !important;
         }
     }
     </style>
@@ -101,8 +100,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-# Streamlit layout with columns and responsive design
-col1, col2 = st.columns(2)
+# Streamlit layout with columns
+col1, col2 = st.columns([1, 2])
 
 # Left column - Image and bio
 with col1:
