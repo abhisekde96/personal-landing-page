@@ -3,6 +3,7 @@ from PIL import Image
 import base64
 from io import BytesIO
 
+
 # Load and encode image
 image = Image.open('dp.jpeg')
 buffered = BytesIO()
