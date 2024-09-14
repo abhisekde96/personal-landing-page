@@ -92,7 +92,7 @@ col1, col2 = st.columns(2)
 with col2:
     st.markdown( 
         """
-        <div style="text-align: center;margin-top: 65px;">
+        <div style="text-align: center;margin-top: 35px;">
             <h1 style="color: white;">Abhisek De</h1>
         </div>
         """,
