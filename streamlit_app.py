@@ -101,7 +101,7 @@ with col2:
 
     st.markdown(
         """
-        <div style="text-align: center; margin-top: 70px;">
+        <div style="text-align: center; margin-top: 60px;">
             <a href="https://github.com/abhisekde96" target="_blank">
                 <button class="animated-button">
                     View my projects on GitHub
