@@ -34,7 +34,7 @@ hide_streamlit_style = """
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
-# App styling and layout
+# App styling and layout with media queries for responsiveness
 st.markdown(
     """
     <style>
@@ -81,6 +81,57 @@ st.markdown(
         text-decoration: underline;
         padding-top: 60px;
         display: inline-block;
+    }
+
+    /* Media queries for responsiveness */
+    @media only screen and (max-width: 768px) {
+        /* Mobile view: Adjust font size and spacing */
+        h1 {
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 12px;
+        }
+
+        .circular-image {
+            width: 150px;
+            height: 150px;
+        }
+
+        .animated-button {
+            font-size: 14px;
+            padding: 8px;
+        }
+
+        .contact-link {
+            font-size: 12px;
+        }
+    }
+
+    @media only screen and (min-width: 769px) {
+        /* Desktop view: Larger font size and layout adjustments */
+        h1 {
+            font-size: 32px;
+        }
+
+        p {
+            font-size: 16px;
+        }
+
+        .circular-image {
+            width: 200px;
+            height: 200px;
+        }
+
+        .animated-button {
+            font-size: 16px;
+            padding: 10px;
+        }
+
+        .contact-link {
+            font-size: 14px;
+        }
     }
     </style>
     """,
