@@ -16,20 +16,6 @@ hide_streamlit_style = """
     footer {visibility: hidden;}
     header {visibility: hidden;}
     </style>
-
-    <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        const streamlitHeader = document.querySelector("header");
-        const streamlitFooter = document.querySelector("footer");
-        
-        if (streamlitHeader) {
-            streamlitHeader.style.display = "none";
-        }
-        if (streamlitFooter) {
-            streamlitFooter.style.display = "none";
-        }
-    });
-    </script>
 """
 
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
@@ -49,12 +35,12 @@ st.markdown(
         display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 200px;
-        height: 200px;
         border-radius: 50%;
         object-fit: cover;
         border: 3px solid #fff;
         box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        min-width: 180px;
+        max-width: 40%; /* Adjust width for responsiveness */
     }
 
     /* Button styling */
@@ -95,8 +81,8 @@ st.markdown(
         }
 
         .circular-image {
-            width: 150px;
-            height: 150px;
+            min-width: 120px;
+            max-width: 50%;
         }
 
         .animated-button {
@@ -120,8 +106,8 @@ st.markdown(
         }
 
         .circular-image {
-            width: 200px;
-            height: 200px;
+            min-width: 180px;
+            max-width: 40%;
         }
 
         .animated-button {
