@@ -9,18 +9,35 @@ buffered = BytesIO()
 image.save(buffered, format="JPEG")
 img_str = base64.b64encode(buffered.getvalue()).decode()
 
-# Streamlit app
+# Inject JavaScript to hide the header and footer
+hide_streamlit_style = """
+    <style>
+    /* Hide Streamlit header and footer */
+    footer {visibility: hidden;}
+    header {visibility: hidden;}
+    </style>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const streamlitHeader = document.querySelector("header");
+        const streamlitFooter = document.querySelector("footer");
+        
+        if (streamlitHeader) {
+            streamlitHeader.style.display = "none";
+        }
+        if (streamlitFooter) {
+            streamlitFooter.style.display = "none";
+        }
+    });
+    </script>
+"""
+
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+# App styling and layout
 st.markdown(
     """
     <style>
-    /* Hide Streamlit header and footer */
-    footer {
-        display: none;
-    }
-    header {
-        display: none;
-    }
-
     /* Main background styling */
     .main {
         background-color: #483D8B;
@@ -36,34 +53,34 @@ st.markdown(
         height: 200px;
         border-radius: 50%;
         object-fit: cover;
-        border: 3px solid #fff; /* Optional: add a border */
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Optional: add shadow */
+        border: 3px solid #fff;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     }
 
     /* Button styling */
     .animated-button {
-        background-color: #00CED1; 
-        color: black; 
-        width: 100%; 
-        padding: 10px; 
-        font-size: 16px; 
-        border: none; 
-        border-radius: 5px; 
+        background-color: #00CED1;
+        color: black;
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
         cursor: pointer;
         transition: background-color 0.3s ease, transform 0.3s ease;
     }
     .animated-button:hover {
-        background-color: #20B2AA; /* Darker shade for hover effect */
-        transform: scale(1.05); /* Slightly enlarge button on hover */
+        background-color: #20B2AA;
+        transform: scale(1.05);
     }
 
     /* Contact link styling */
     .contact-link {
         color: white !important;
-        font-size: 14px;  /* Adjust the font size as needed */
+        font-size: 14px;
         text-decoration: underline;
-        padding-top: 60px;  /* Adjust the padding as needed */
-        display: inline-block;  /* This ensures padding works for inline elements */
+        padding-top: 60px;
+        display: inline-block;
     }
     </style>
     """,
